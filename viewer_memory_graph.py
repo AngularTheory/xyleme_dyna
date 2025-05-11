@@ -4,6 +4,7 @@ import networkx as nx
 from xyleme_core import ΔxylemeCore
 import numpy as np
 
+# Must be the first Streamlit command
 st.set_page_config(page_title="∆xyleme — Live Memory", layout="wide")
 
 st.title("∆xyleme — Cognitive Memory Visualization")
@@ -12,7 +13,7 @@ st.title("∆xyleme — Cognitive Memory Visualization")
 if 'core' not in st.session_state:
     st.session_state.core = ΔxylemeCore()
 
-# User interface
+# User input
 input_text = st.text_input("Stimulate ∆xyleme (symbolic perception)", "hello")
 if st.button("Stimulate"):
     vec = np.array([ord(c) % 128 / 128 for c in input_text])
