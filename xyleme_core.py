@@ -94,6 +94,9 @@ class ΔxylemeCore:
         self.coherence = TemporalCoherence()
         self.memory = MnemicReorganization(self.self_model.mental_map)
 
+    def binary_reply(self, Δτ):
+        return "YES" if Δτ > 1.0 else "NO"
+
     def perceive(self, input_vector):
         norm_input = np.linalg.norm(input_vector)
         S_eff = np.std(input_vector) * np.pi**2
@@ -113,5 +116,6 @@ class ΔxylemeCore:
             "Δτ": Δτ,
             "decision": decision,
             "epoch": self.time.epoch,
-            "attractor": self.self_model.get_attractor()
+            "attractor": self.self_model.get_attractor(),
+            "response": self.binary_reply(Δτ)
         }
